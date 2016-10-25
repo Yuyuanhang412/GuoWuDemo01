@@ -9,6 +9,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.bwie.guowudemo01.R;
+import com.bwie.guowudemo01.bean.Bean;
 
 import java.util.List;
 
@@ -18,9 +19,9 @@ import java.util.List;
 public class ZhenWuAdapter extends BaseAdapter{
 
     private Context context;
-    private List<String> list;
+    private List<Bean.DataEntity.ForumListEntity.GroupEntity> list;
 
-    public ZhenWuAdapter(Context context, List<String> list) {
+    public ZhenWuAdapter(Context context, List<Bean.DataEntity.ForumListEntity.GroupEntity> list) {
 
         this.context=context;
         this.list=list;
@@ -48,22 +49,22 @@ public class ZhenWuAdapter extends BaseAdapter{
         if (convertView==null){
             vh=new ViewHolder();
             convertView=View.inflate(context, R.layout.fragment_zhengwu_item,null);
-            vh.tv_title= (TextView) convertView.findViewById(R.id.tv_fragm_zhenwu_title);
-            vh.tv_date= (TextView) convertView.findViewById(R.id.tv_fragm_zhenwu_date);
+            vh.tv_id= (TextView) convertView.findViewById(R.id.tv_fragm_zhenwu_id);
+            vh.tv_name= (TextView) convertView.findViewById(R.id.tv_fragm_zhenwu_name);
             convertView.setTag(vh);
 
         }else{
             vh= (ViewHolder) convertView.getTag();
         }
 
-        vh.tv_title.setText("国家统计局城市司高级统计师刘建伟解读近期房价数据");
-        vh.tv_date.setText("2016_10_21");
+        vh.tv_id.setText(list.get(position).getId()+"");
+        vh.tv_name.setText(list.get(position).getDescription());
         return convertView;
     }
 
     class ViewHolder{
 
-        private TextView tv_title,tv_date;
+        private TextView tv_id,tv_name;
     }
 
 }
