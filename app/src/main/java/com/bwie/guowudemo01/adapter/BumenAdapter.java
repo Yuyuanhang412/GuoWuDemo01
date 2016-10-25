@@ -10,6 +10,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.bwie.guowudemo01.R;
+import com.bwie.guowudemo01.bean.Bean;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -20,14 +21,14 @@ import java.util.List;
  */
 public class BumenAdapter extends BaseAdapter{
     private Context context;
-   private List<String> list;
+   private List<Bean.DataEntity.ForumListEntity> list;
     private ImageLoader imageLoa;
 
-    public BumenAdapter(Context context, List<String> list) {
+    public BumenAdapter(Context context, List<Bean.DataEntity.ForumListEntity> list) {
 
         this.context=context;
         this.list=list;
-        //ImageLoader imageLoa=ImageLoader.getInstance();
+       // imageLoa=ImageLoader.getInstance();
         //imageLoa.init(ImageLoaderConfiguration.createDefault(context));
 
     }
@@ -61,9 +62,11 @@ public class BumenAdapter extends BaseAdapter{
             vh= (ViewHolder) convertView.getTag();
         }
 
-        //imageLoa.displayImage(list.get(position),vh.image_bumen);
+        //List<Bean.DataEntity.ForumListEntity.GroupEntity> bean= list.get(position).getGroup();
 
-        vh.tv_bumen.setText("发展改革委");
+        //imageLoa.displayImage(bean.get(position).getPhoto(),vh.image_bumen);
+
+        vh.tv_bumen.setText(list.get(position).getName());
 
         return convertView;
     }
